@@ -1,6 +1,7 @@
 import time
 from datetime import datetime
 import streamlit as st
+import streamlit.components.v1 as components
 import google.generativeai as genai
 
 # Sayfa Yapılandırması
@@ -223,12 +224,6 @@ if user_input:
         )
         st.session_state.messages.append({"role": "assistant", "content": full_text})
 
-    except APIError as e:
-        sky_message_placeholder.empty()
-        if "429" in str(e) or "RESOURCE_EXHAUSTED" in str(e):
-            st.warning("Ücretsiz kullanım limitine ulaştın. Lütfen biraz bekleyip tekrar dene.")
-        else:
-            st.error(f"API Hatası: {e}")
     except Exception as e:
         sky_message_placeholder.empty()
         st.error(f"Hata oluştu: {e}")
