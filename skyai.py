@@ -208,7 +208,7 @@ if user_input:
 
     full_text = ""
     try:
-        response_stream = st.session_state.chat.send_message_stream(user_input)
+        response_stream = st.session_state.chat.send_message(user_input, stream=True)
         
         for chunk in response_stream:
             if chunk.text:
