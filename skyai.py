@@ -176,7 +176,7 @@ if "client" not in st.session_state:
 
 if "chat" not in st.session_state:
     st.session_state.chat = st.session_state.client.chats.create(
-        model="gemini-3.6-flash",
+        model="gemini-1.5-flash",
         config={"system_instruction": system_instruction}
     )
 
