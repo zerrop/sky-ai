@@ -168,17 +168,15 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-# Google AI Studio API Key
-API_KEY = "AQ.Ab8RN6JNGdqWs_UXR_015I6de0pgCFJH9Yd4Cg-jbFTZGKZGEA"
-
-if "client" not in st.session_state:
-    st.session_state.client = genai.Client(api_key=API_KEY)
+# API Anahtarı ve Model Yapılandırması
+genai.configure(api_key="AQ.Ab8RN6JNGdqWs_UXR_015I6de0pgCFJH9Yd4Cg-jbFTZGKZGEA")
 
 if "chat" not in st.session_state:
-    st.session_state.chat = st.session_state.client.chats.create(
-        model="gemini-1.5-flash",
-        config={"system_instruction": system_instruction}
+    model = genai.GenerativeModel(
+        model_name="gemini-1.5-flash",
+        system_instruction=system_instruction
     )
+    st.session_state.chat = model.start_chat(history=[])
 
 if "messages" not in st.session_state:
     st.session_state.messages = []
