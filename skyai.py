@@ -1,10 +1,7 @@
-import os
 import time
 from datetime import datetime
 import streamlit as st
-import streamlit.components.v1 as components
-from google import genai
-from google.genai.errors import APIError
+import google.generativeai as genai
 
 # Sayfa Yapılandırması
 st.set_page_config(page_title="Sky", layout="centered")
